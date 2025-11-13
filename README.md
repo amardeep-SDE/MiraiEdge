@@ -59,7 +59,7 @@ This dashboard consumes live data from the **JSONPlaceholder Public API** and pr
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/yourusername/responsive-dashboard.git
+git clone [text](https://github.com/amardeep-SDE/MiraiEdge)
 cd responsive-dashboard
 
 2️⃣ Install dependencies
@@ -99,6 +99,52 @@ You already have:
 ✅ Dark mode toggle
 ✅ Unit test (Dashboard)
 ✅ Clean structure & good code quality
+
+
+🚀 Production Build
+npm run build
+
+🌍 Deploying to GitHub Pages
+
+MiraiEdge uses HashRouter + gh-pages for reliable GitHub Pages deployment.
+
+1️⃣ Install gh-pages
+npm install --save-dev gh-pages
+
+2️⃣ Add Scripts in package.json
+{
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  }
+}
+
+3️⃣ Set Vite Base Path (vite.config.ts)
+export default defineConfig({
+  plugins: [react()],
+  base: "/MiraiEdge/",  
+});
+
+4️⃣ Build + Deploy
+npm run deploy
+
+5️⃣ Enable GitHub Pages
+
+Go to:
+Settings → Pages → Deploy from Branch → gh-pages
+
+Your project will be live at:
+
+👉 https://amardeep-sde.github.io/MiraiEdge/
+
+
+🤝 Contributing
+
+Pull requests are welcome! For major changes, open an issue first.
+
+📜 License
+
+MIT License © 2025 Amardeep
 
 🧑‍💻 Author
 
