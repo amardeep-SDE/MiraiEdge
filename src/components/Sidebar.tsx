@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggle }) => {
         }}
         transition="all 0.35s ease"
         bg="rgba(255, 255, 255, 0.08)"
-        _dark={{ bg: "rgba(15, 15, 20, 0.8)" }}
+        // _dark={{ bg: "rgba(15, 15, 20, 0.8)" }}
         backdropFilter="blur(18px)"
         borderRightWidth="1px"
         // borderColor="gray.700"

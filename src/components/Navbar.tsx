@@ -1,8 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { FaBell } from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
 import ProfileMenu from "./ProfileMenu";
+import { motion } from "framer-motion";
 
 interface NavbarProps {
   toggleSidebar: () => void;
@@ -22,15 +22,17 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={toggleSidebar}
-          className="lg:hidden text-gray-700 dark:text-gray-300 focus:outline-none text-2xl hover:rotate-90 transition-transform"
+          className="lg:hidden text-gray-700 dark:text-gray-300 text-2xl hover:rotate-90 transition-transform"
           aria-label="Toggle sidebar"
         >
           ☰
         </motion.button>
 
         <motion.h2
-          className="font-extrabold text-xl sm:text-2xl bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 bg-clip-text text-transparent select-none"
           whileHover={{ scale: 1.05 }}
+          className="font-extrabold text-xl sm:text-2xl bg-gradient-to-r 
+                     from-blue-600 via-purple-500 to-pink-500 bg-clip-text 
+                     text-transparent select-none"
         >
           Admin Dashboard
         </motion.h2>
@@ -44,15 +46,18 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
       >
         <motion.button
           whileHover={{ scale: 1.1, rotate: 3 }}
-          className="relative p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition"
+          className="relative p-2 rounded-md hover:bg-gray-100 
+                     dark:hover:bg-gray-700 transition"
           aria-label="Notifications"
         >
           <FaBell className="text-lg text-gray-800 dark:text-gray-200" />
+
           <motion.span
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
             className="absolute -top-1 -right-1 flex items-center justify-center 
-                       w-4 h-4 text-[10px] font-bold text-white bg-red-500 rounded-full shadow"
+                       w-4 h-4 text-[10px] font-bold text-white 
+                       bg-red-500 rounded-full shadow"
           >
             3
           </motion.span>

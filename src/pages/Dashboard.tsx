@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Skeleton from "../components/Skeleton";
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -13,8 +14,10 @@ import {
   Bar,
   Legend,
 } from "recharts";
+
 import { FaUsers, FaUserCheck, FaGlobe, FaChartPie } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion";   
+
 
 interface User {
   id: number;
@@ -32,6 +35,7 @@ const Dashboard: React.FC = () => {
     uniqueDomains: 0,
     totalWebsites: 0,
   });
+
   const [chartData, setChartData] = useState<any[]>([]);
 
   const fetchData = async () => {
@@ -71,7 +75,7 @@ const Dashboard: React.FC = () => {
     title: string,
     value: string | number,
     color: string,
-    icon: JSX.Element
+    icon: React.ReactNode
   ) => (
     <motion.div
       whileHover={{ scale: 1.05, y: -4 }}
@@ -143,8 +147,6 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      {error && <p className="text-red-500">{error}</p>}
-
       {loading ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {Array(4)
@@ -161,40 +163,21 @@ const Dashboard: React.FC = () => {
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {renderCard(
-            "Total Users",
-            stats.totalUsers,
-            "text-blue-500",
-            <FaUsers />
-          )}
-          {renderCard(
-            "Active Users",
-            stats.activeUsers,
-            "text-green-500",
-            <FaUserCheck />
-          )}
-          {renderCard(
-            "Unique Domains",
-            stats.uniqueDomains,
-            "text-purple-500",
-            <FaGlobe />
-          )}
-          {renderCard(
-            "Total Websites",
-            stats.totalWebsites,
-            "text-yellow-500",
-            <FaChartPie />
-          )}
+          {renderCard("Total Users", stats.totalUsers, "text-blue-500", <FaUsers />)}
+          {renderCard("Active Users", stats.activeUsers, "text-green-500", <FaUserCheck />)}
+          {renderCard("Unique Domains", stats.uniqueDomains, "text-purple-500", <FaGlobe />)}
+          {renderCard("Total Websites", stats.totalWebsites, "text-yellow-500", <FaChartPie />)}
         </div>
       )}
 
       {!loading && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* LINE CHART */}
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 backdrop-blur-md border border-white/10"
           >
-            <h3 className="text-lg font-semibold mb-4 dark:text-gray-200 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-4 dark:text-gray-200">
               📈 User Activity Trend
             </h3>
 
@@ -205,18 +188,8 @@ const Dashboard: React.FC = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="active"
-                  stroke="#3b82f6"
-                  strokeWidth={2}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="visits"
-                  stroke="#10b981"
-                  strokeWidth={2}
-                />
+                <Line type="monotone" dataKey="active" stroke="#3b82f6" strokeWidth={2} />
+                <Line type="monotone" dataKey="visits" stroke="#10b981" strokeWidth={2} />
               </LineChart>
             </ResponsiveContainer>
           </motion.div>
@@ -225,7 +198,7 @@ const Dashboard: React.FC = () => {
             whileHover={{ scale: 1.01 }}
             className="bg-white dark:bg-gray-800 rounded-2xl shadow p-6 backdrop-blur-md border border-white/10"
           >
-            <h3 className="text-lg font-semibold mb-4 dark:text-gray-200 flex items-center gap-2">
+            <h3 className="text-lg font-semibold mb-4 dark:text-gray-200">
               📊 Engagement Overview
             </h3>
 
